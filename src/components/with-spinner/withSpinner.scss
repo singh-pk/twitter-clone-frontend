@@ -1,0 +1,19 @@
+.with-spinner:before {
+  content: '';
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 50%;
+  border: 0.2rem solid #a3a1a16c;
+  border-top-color: #0da2ff;
+  animation: spinner 0.7s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,79 @@
+.small-modal {
+  position: fixed;
+  width: 13rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px,
+    rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+  border-radius: 0.25rem;
+  top: 11rem;
+  left: 8%;
+  z-index: 10;
+
+  &.profile-modal {
+    border-radius: 1rem;
+    top: 22.2rem;
+    left: 9%;
+
+    & > div:last-of-type {
+      margin-bottom: 0.7rem;
+    }
+
+    & > div:first-of-type {
+      margin-top: 0.7rem;
+    }
+
+    .modal-icon {
+      position: absolute;
+      fill: #ffffff;
+      filter: drop-shadow(rgb(204, 214, 221) 1px -1px 1px);
+      height: 1rem;
+      width: 1rem;
+      transform: rotateX(180deg);
+      bottom: -0.7rem;
+      left: 1rem;
+    }
+  }
+
+  .small-modal-container {
+    width: 100%;
+
+    & > div {
+      letter-spacing: 0.05rem;
+      padding: 1rem;
+      font-size: 1.1rem;
+
+      &:hover {
+        background-color: #f3f6fa;
+        cursor: pointer;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .profile-modal {
+    left: 8.8% !important;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .profile-modal {
+    left: 7.8% !important;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .profile-modal {
+    left: 6.3% !important;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .profile-modal {
+    left: 4% !important;
+  }
+}

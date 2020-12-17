@@ -1,0 +1,96 @@
+.profile-pic {
+  .background {
+    position: relative;
+    height: 12.5rem;
+    background: #ccd6dd;
+
+    .front {
+      position: absolute;
+      bottom: -3.8rem;
+      z-index: 3;
+      left: 1rem;
+      background: #ffffff;
+      border-radius: 50%;
+      height: 7.6rem;
+      width: 7.6rem;
+
+      .front-img-container {
+        position: flex;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+
+        & > input[type='file'] {
+          display: none;
+        }
+
+        .front-img {
+          height: 100%;
+          width: 100%;
+          border-radius: 50%;
+          padding: 0.1rem;
+          outline: none;
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+.profile-user-info {
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #bebebe6c;
+
+  & > button:first-of-type {
+    align-self: flex-end;
+  }
+
+  .profile-name {
+    margin-top: 1rem;
+  }
+
+  .profile-username {
+    color: #657786;
+  }
+
+  .profile-user-joined {
+    display: flex;
+    align-items: center;
+    margin-top: 0.4rem;
+    color: #657786;
+    fill: #657786;
+
+    .calendar-icon {
+      height: 1.2rem;
+      margin-top: 0.35rem;
+      margin-right: 0.3rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .followers-list {
+    display: flex;
+    padding-top: 0.2rem;
+
+    & > span {
+      display: flex;
+      color: #657786;
+
+      & > h4 {
+        padding-right: 0.3rem;
+        color: #000000 !important;
+      }
+
+      &:last-child {
+        padding-left: 1.3rem;
+      }
+    }
+  }
+}

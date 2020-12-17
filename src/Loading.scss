@@ -1,0 +1,24 @@
+.isloading-container {
+  padding-left: calc(50% - 0.35rem);
+  padding-top: 15%;
+  padding-bottom: 15%;
+
+  .isloading:before {
+    content: '';
+    display: grid;
+    width: 100%;
+    place-items: center;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 50%;
+    border: 0.2rem solid #a3a1a16c;
+    border-top-color: #0da2ff;
+    animation: spinner 0.7s linear infinite;
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,74 @@
+.icon {
+  fill: inherit;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.sidebar {
+  display: flex;
+  justify-content: flex-end;
+
+  .sidebar-container {
+    padding: 2rem 12% 0 0.2rem;
+
+    .sidebar-container-fixed {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: sticky;
+      top: 2rem;
+
+      & > div {
+        border-radius: 60%;
+        cursor: pointer;
+        padding: 0.6rem 0.6rem;
+        margin-top: 1rem;
+      }
+
+      & > div:hover {
+        background-color: #e3f9ff;
+        opacity: 0.9;
+        color: #1da1f2;
+        fill: #1da1f2;
+        transition: all 0.3s ease-out;
+      }
+
+      & > div > .active > svg {
+        color: #1da1f2;
+        fill: #1da1f2;
+      }
+
+      & > div:last-child {
+        position: absolute;
+        top: 28rem;
+      }
+
+      & > div:last-child:hover {
+        opacity: unset;
+      }
+
+      .sidebar-pic {
+        border-radius: 50%;
+        height: 2.6rem;
+        width: 2.6rem;
+
+        .sidebar-img-container {
+          position: flex;
+          height: 100%;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+
+          .sidebar-profile-img {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            outline: none;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

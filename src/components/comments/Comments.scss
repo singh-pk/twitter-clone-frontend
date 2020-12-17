@@ -1,0 +1,24 @@
+.show-replies {
+  color: #1b95e0;
+  display: flex;
+  align-items: center;
+  padding: 0.7rem;
+  gap: 1rem;
+  border-bottom: 1px solid #bebebe6c;
+  opacity: 2;
+
+  & > div:first-of-type {
+    margin-left: 1.5rem;
+    & > div {
+      height: 0.15rem;
+      width: 0.15rem;
+      background-color: #c4cfd6;
+      margin: 0.2rem;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+  }
+}

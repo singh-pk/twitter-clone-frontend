@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .edit-profile-modal-background {
+    background-color: #000000;
+    opacity: 0.5;
+  }
+}
+
+.toggle-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 8;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  min-width: 420px;
+
+  & > div:first-of-type {
+    flex: 0.15;
+    flex-shrink: 1;
+    border-right: 1px solid #bebebe6c;
+  }
+
+  & > div:nth-last-of-type(2) {
+    flex: 0.47;
+    border-right: 1px solid #bebebe6c;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  & > div:last-of-type {
+    flex: 0.38;
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .app {
+    & > div:last-of-type {
+      flex: 0.15;
+    }
+
+    & > div:nth-last-of-type(2) {
+      flex: 0.6;
+    }
+  }
+}
+
+@media screen and (max-width: 1005px) {
+  .app {
+    & > div:last-of-type {
+      display: none;
+      flex: 0;
+    }
+
+    & > div:nth-last-of-type(2) {
+      flex: 0.6;
+    }
+  }
+}
+
+@media screen and (max-width: 885px) {
+  .app {
+    & > div:nth-last-of-type(2) {
+      flex: 0.7;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .app {
+    & > div:nth-last-of-type(2) {
+      flex: 0.85;
+    }
+  }
+}

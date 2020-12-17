@@ -1,0 +1,126 @@
+.comments {
+  display: flex;
+  padding: 0.5rem 1rem 0rem 1rem;
+
+  &.borderBottom {
+    border-bottom: 1px solid #bebebe6c;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  & > div:first-of-type {
+    .comment-user-pic {
+      border-radius: 50%;
+      height: 3rem;
+      width: 3rem;
+      overflow: hidden;
+
+      & > img {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        border: none;
+      }
+    }
+
+    .side-line {
+      height: calc(100% - 3rem);
+      width: 0.15rem;
+      background-color: #c4cfd6;
+      margin-top: 0.2rem;
+      margin-left: 1.4rem;
+    }
+  }
+
+  & > div:last-of-type {
+    width: 100%;
+
+    & > div:first-of-type {
+      padding-left: 0.3rem;
+      & > div {
+        display: flex;
+      }
+
+      & > div:first-of-type {
+        & > span {
+          padding-left: 0.3rem;
+          color: #657786;
+        }
+      }
+
+      & > span {
+        color: #657786;
+      }
+
+      & > a {
+        color: #1b95e0;
+      }
+
+      & > div:last-of-type {
+        padding-top: 0.1rem;
+      }
+    }
+
+    & > div:last-of-type {
+      display: flex;
+      padding-top: 0.3rem;
+      justify-content: space-evenly;
+      align-items: center;
+      padding-bottom: 0.1rem;
+      cursor: pointer;
+
+      .post-buttons {
+        height: 1.3rem;
+        fill: #657786;
+      }
+
+      .liked {
+        fill: #e0245e;
+      }
+
+      & > div:first-of-type {
+        padding: 0.4rem 0.4rem;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #e3f9ff;
+          .post-buttons {
+            fill: #1da1f2;
+          }
+        }
+      }
+
+      & > div:last-of-type {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        & > div {
+          padding: 0.4rem 0.4rem;
+          border-radius: 50%;
+        }
+
+        & > span {
+          color: #657786;
+          padding-left: 0.1rem;
+          margin-bottom: 0.1rem;
+        }
+
+        &:hover {
+          & > div {
+            background-color: rgba(224, 36, 94, 0.1);
+            .post-buttons {
+              fill: #e0245e;
+            }
+          }
+          & > span {
+            color: #e0245e;
+          }
+        }
+      }
+    }
+  }
+}

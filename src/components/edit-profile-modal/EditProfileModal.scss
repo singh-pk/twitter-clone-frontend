@@ -1,0 +1,26 @@
+.edit-profile-overflow {
+  height: calc(34rem - 3.6rem);
+  overflow-y: scroll;
+
+  & > div:nth-of-type(1) {
+    padding: 0.1rem 0 0.1rem 0.1rem;
+  }
+
+  .edit-profile-pic {
+    background-color: #03030363 !important;
+    opacity: 1;
+  }
+
+  .edit-front-pic:hover {
+    cursor: pointer;
+  }
+
+  .edit-front-img:hover {
+    opacity: 0.85;
+  }
+
+  .edit-profile-input {
+    padding: 1rem;
+    padding-top: 5rem;
+  }
+}

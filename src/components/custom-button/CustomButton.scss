@@ -1,0 +1,93 @@
+.custom-button {
+  width: 100%;
+  background-color: #1da1f2;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  border-radius: 2rem;
+  opacity: 0.9;
+
+  &.edit-profile-button {
+    width: 7rem;
+    opacity: 1;
+    background-color: #ffffff;
+    border: 1px solid #1da1f2;
+    color: #1da1f2;
+    letter-spacing: unset;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 0;
+
+    &:hover {
+      background-color: #e4f3fc;
+    }
+  }
+
+  &.following-button {
+    width: 7rem;
+    opacity: 1;
+    background-color: #1da1f2;
+    border: 1px solid #1da1f2;
+    color: #ffffff;
+    letter-spacing: unset;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 0;
+
+    &:hover {
+      background-color: #ca2055;
+      border: 1px solid #ca2055;
+      & > span {
+        display: none;
+      }
+    }
+
+    &:hover::before {
+      content: 'Unfollow';
+    }
+  }
+
+  &.follow-profile-button {
+    width: 5rem;
+    height: 2rem;
+    opacity: 1;
+    background-color: #ffffff;
+    border: 1px solid #1da1f2;
+    color: #1da1f2;
+    letter-spacing: unset;
+    font-size: 1rem;
+    padding: unset;
+    margin: unset;
+
+    &:hover {
+      background-color: #e4f3fc;
+    }
+  }
+
+  &.save-profile-button {
+    width: 4rem;
+    height: 2rem;
+    opacity: 0.9;
+    background-color: #1da1f2;
+    color: #ffffff;
+    letter-spacing: unset;
+    font-size: 1rem;
+    padding: unset;
+    margin: unset;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
