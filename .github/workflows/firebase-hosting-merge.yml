@@ -20,3 +20,4 @@ jobs:
           projectId: twitter-clone-312a7
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
+          CI: false
