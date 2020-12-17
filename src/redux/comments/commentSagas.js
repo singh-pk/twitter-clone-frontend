@@ -6,8 +6,8 @@ import {
   getCommentsByPostIdFailure,
   getRepliesByCommentIdSuccess,
   getRepliesByCommentIdFailure,
-  createCommentSuccess,
-  createReplySuccess,
+  // createCommentSuccess,
+  // createReplySuccess,
 } from './commentActions';
 
 import CommentActionTypes from './commentTypes';
