@@ -7,10 +7,10 @@ import rootSaga from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [sagaMiddleware];
+let middlewares = [sagaMiddleware];
 
 if (process.env.NODE_ENV === 'development') {
-  middlewares.push(logger);
+  middlewares = [...middlewares, logger];
 }
 
 const store = createStore(
