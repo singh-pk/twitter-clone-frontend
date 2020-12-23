@@ -22,7 +22,7 @@ class EditProfileModal extends React.Component {
     this.state = {
       name: this.props.name,
       photo:
-        `http://localhost:8080/api/user/photo/${
+        `https://tweaker-twitter.herokuapp.com/api/user/photo/${
           this.props.currentUser._id
         }?${new Date().getTime()}` || DefaultImage,
       userData: new FormData(),

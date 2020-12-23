@@ -7,7 +7,7 @@ import { ReactComponent as ReplyButton } from '../icons/reply-button.svg';
 import { ReactComponent as HeartButton } from '../icons/heart-icon.svg';
 import { ReactComponent as HeartButtonLiked } from '../icons/heart-icon-liked.svg';
 import DefaultImage from '../icons/default_img.jfif';
-import CreateCommentModal from '../createCommentModal/CreateCommentModal';
+// import CreateCommentModal from '../createCommentModal/CreateCommentModal';
 
 import {
   selectPosts,
@@ -64,16 +64,15 @@ class Posts extends React.Component {
         {Object.keys(posts).length > 0 ? (
           Object.keys(posts).map((post) => {
             return (
-              <>
+              <React.Fragment key={post}>
                 <div
-                  key={post}
                   className={`${postPageId && 'post-page-posts'} posts`}
                   onClick={() =>
                     history.push(`/${posts[post].postedBy.name}/${post}`)
                   }>
                   <div className='post-user-pic'>
                     <img
-                      src={`http://localhost:8080/api/user/photo/${
+                      src={`https://tweaker-twitter.herokuapp.com/api/user/photo/${
                         posts[post].postedBy._id
                       }?${new Date().getTime()}`}
                       onError={(i) => (i.target.src = DefaultImage)}
@@ -95,7 +94,7 @@ class Posts extends React.Component {
                     <div className='post-img-container'>
                       {
                         <img
-                          src={`http://localhost:8080/api/post/photo/${
+                          src={`https://tweaker-twitter.herokuapp.com/api/post/photo/${
                             posts[post]._id
                           }?${new Date().getTime()}`}
                           alt=''
@@ -143,8 +142,8 @@ class Posts extends React.Component {
                     </div>
                   </div>
                 </div>
-                {<CreateCommentModal post={posts[post]} />}
-              </>
+                {/* {<CreateCommentModal post={posts[post]} />} */}
+              </React.Fragment>
             );
           })
         ) : (

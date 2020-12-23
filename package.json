@@ -43,5 +43,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://tweaker-twitter.herokuapp.com/"
+  "proxy": "https://tweaker-twitter.herokuapp.com/api"
+
 }

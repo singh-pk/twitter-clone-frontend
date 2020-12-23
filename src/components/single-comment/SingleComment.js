@@ -53,7 +53,7 @@ class SingleComment extends React.Component {
         <div>
           <div className='comment-user-pic'>
             <img
-              src={`http://localhost:8080/api/user/photo/${DefaultImage}?${new Date().getTime()}`}
+              src={`https://tweaker-twitter.herokuapp.com/api/user/photo/${DefaultImage}?${new Date().getTime()}`}
               onError={(i) => (i.target.src = DefaultImage)}
               alt=''
             />

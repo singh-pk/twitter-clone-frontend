@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { ReactComponent as Google } from '../icons/google-icon.svg';
-import { ReactComponent as Facebook } from '../icons/facebook-icon.svg';
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
 
@@ -77,14 +75,6 @@ class SignIn extends React.Component {
           <span>
             <Link to='/signup'>Sign Up</Link>
           </span>
-        </div>
-
-        <span>or</span>
-        <span>Sign In Using:</span>
-
-        <div>
-          <Google className='sign-in-button' />
-          <Facebook className='sign-in-button' />
         </div>
       </div>
     );

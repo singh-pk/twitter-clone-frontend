@@ -61,7 +61,7 @@ const Sidebar = ({
           <div className='sidebar-pic'>
             <div className='sidebar-img-container'>
               <img
-                src={`http://localhost:8080/api/user/photo/${
+                src={`https://tweaker-twitter.herokuapp.com/api/user/photo/${
                   currentUser._id
                 }?${new Date().getTime()}`}
                 onError={(i) => (i.target.src = DefaultImage)}

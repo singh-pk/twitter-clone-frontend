@@ -64,7 +64,7 @@ class Profile extends React.Component {
             <div className='front'>
               <div className='front-img-container'>
                 <img
-                  src={`http://localhost:8080/api/user/photo/${
+                  src={`https://tweaker-twitter.herokuapp.com/api/user/photo/${
                     userProfile._id
                   }?${new Date().getTime()}`}
                   onError={(i) => (i.target.src = DefaultImage)}

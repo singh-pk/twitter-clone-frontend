@@ -42,18 +42,4 @@
       }
     }
   }
-
-  & > span:nth-of-type(2),
-  & > span:last-of-type {
-    padding-top: 1rem;
-  }
-
-  & > div:last-of-type {
-    .sign-in-button {
-      height: 2rem;
-      width: 2rem;
-      margin: 2rem 1.5rem;
-      cursor: pointer;
-    }
-  }
 }
