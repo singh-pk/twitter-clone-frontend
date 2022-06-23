@@ -74,6 +74,8 @@ function* signIn({ payload: { email, password } }) {
     yield call(persistAuthState, res.data);
     yield put(signInSuccess(res.data.user));
   } catch (err) {
+    console.log({ err });
+    debugger;
     yield put(signInFailure(err.response.data.error));
   }
 }
