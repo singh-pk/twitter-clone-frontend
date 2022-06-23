@@ -1,11 +1,11 @@
 import { takeLatest, takeEvery, all, call, put } from 'redux-saga/effects';
-import axios from 'axios';
+import axios from '../../config/axios';
 
 import {
   getCommentsByPostIdSuccess,
   getCommentsByPostIdFailure,
   getRepliesByCommentIdSuccess,
-  getRepliesByCommentIdFailure,
+  getRepliesByCommentIdFailure
   // createCommentSuccess,
   // createReplySuccess,
 } from './commentActions';
@@ -14,7 +14,7 @@ import CommentActionTypes from './commentTypes';
 
 const token = () => JSON.parse(localStorage.getItem('jwt')).token;
 
-const transformData = (responseData) =>
+const transformData = responseData =>
   responseData.reduce((accumulator, response) => {
     accumulator[response._id] = response;
     return accumulator;
@@ -25,8 +25,8 @@ function* getCommentsByPostId({ payload: { postId, userId } }) {
     let res = yield axios.get(`/post/${postId}/${userId}/comment`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     let transformedData = transformData(res.data.comments);
     yield put(getCommentsByPostIdSuccess(transformedData));
@@ -40,8 +40,8 @@ function* getRepliesByCommentId({ payload: { commentId, userId } }) {
     let res = yield axios.get(`/comment/${commentId}/${userId}/reply`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     yield console.log(res);
     let transformedData = transformData(res.data.replies);
@@ -56,8 +56,8 @@ function* createComment({ payload: { postId, userId } }) {
     let res = yield call(axios.post, `/post/${postId}/${userId}/comment`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     yield console.log(res);
   } catch (err) {
@@ -70,8 +70,8 @@ function* createReply({ payload: { commentId, userId } }) {
     let res = yield call(axios.post, `/comment/${commentId}/${userId}/reply`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     yield console.log(res);
   } catch (err) {
@@ -106,6 +106,6 @@ export function* commentSaga() {
     call(onGetCommetsByPostIdStart),
     call(onGetRepliesByCommentIdStart),
     call(onCreateCommentStart),
-    call(onCreateReplyStart),
+    call(onCreateReplyStart)
   ]);
 }

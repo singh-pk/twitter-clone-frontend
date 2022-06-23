@@ -1,5 +1,5 @@
 import { takeLatest, all, call, put } from 'redux-saga/effects';
-import axios from 'axios';
+import axios from '../../config/axios';
 
 import {
   signUpSuccess,
@@ -71,13 +71,9 @@ function* signIn({ payload: { email, password } }) {
         headers: { 'Content-Type': 'application/json' }
       }
     );
-    console.log({ data: res.data });
-    debugger;
     yield call(persistAuthState, res.data);
     yield put(signInSuccess(res.data.user));
   } catch (err) {
-    console.log({ err });
-    debugger;
     yield put(signInFailure(err.response.data.error));
   }
 }

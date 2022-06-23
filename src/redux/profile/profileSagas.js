@@ -1,5 +1,5 @@
 import { takeLatest, put, call, all } from 'redux-saga/effects';
-import axios from 'axios';
+import axios from '../../config/axios';
 
 import {
   fetchUserProfileSuccess,
@@ -9,19 +9,19 @@ import {
   followUserSuccess,
   followUserFailure,
   unFollowUserSuccess,
-  unFollowUserFailure,
+  unFollowUserFailure
 } from './profileActions';
 
 import {
   updateUserFollowing,
-  updateUserUnfollowing,
+  updateUserUnfollowing
 } from '../user/userActions';
 
 import ProfileActionTypes from './profileTypes';
 
 const token = () => JSON.parse(localStorage.getItem('jwt')).token;
 
-const persistAuthState = (jwt) => {
+const persistAuthState = jwt => {
   if (typeof window !== undefined) {
     localStorage.setItem('jwt', JSON.stringify(jwt));
   }
@@ -32,8 +32,8 @@ function* fetchWhoToFollow({ payload: { userId } }) {
     let res = yield call(axios.get, `/user/whoToFollow/${userId}`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     yield put(fetchWhoToFollowSuccess(res.data.users));
   } catch (err) {
@@ -46,8 +46,8 @@ function* fetchUserProfile({ payload: { userId } }) {
     let res = yield call(axios.get, `/user/${userId}`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     yield put(fetchUserProfileSuccess(res.data));
   } catch (err) {
@@ -64,8 +64,8 @@ function* followUser({ payload: { userId, followId } }) {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token()}`,
-        },
+          Authorization: `Bearer ${token()}`
+        }
       }
     );
     let userInfo = yield JSON.parse(localStorage.getItem('jwt'));
@@ -87,12 +87,12 @@ function* unFollowUser({ payload: { userId, unfollowId } }) {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token()}`,
-        },
+          Authorization: `Bearer ${token()}`
+        }
       }
     );
     let userInfo = yield JSON.parse(localStorage.getItem('jwt'));
-    yield userInfo.user.following.filter((id) => id !== unfollowId);
+    yield userInfo.user.following.filter(id => id !== unfollowId);
     yield call(persistAuthState, userInfo);
     yield put(updateUserUnfollowing(unfollowId));
     yield put(unFollowUserSuccess(res.data));
@@ -128,6 +128,6 @@ export function* profileSaga() {
     call(onFetchWhoToFollowStart),
     call(onFetchUserProfileStart),
     call(onFollowUserStart),
-    call(onUnFollowUserStart),
+    call(onUnFollowUserStart)
   ]);
 }

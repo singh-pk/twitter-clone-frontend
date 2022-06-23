@@ -42,7 +42,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://tweaker-twitter.herokuapp.com/api",
   "devDependencies": {
     "redux-logger": "^3.0.6"
   }

@@ -1,5 +1,5 @@
 import { takeLatest, all, call, put } from 'redux-saga/effects';
-import axios from 'axios';
+import axios from '../../config/axios';
 
 import {
   getPostByUserSuccess,
@@ -7,14 +7,14 @@ import {
   getPostByIdSuccess,
   getPostByIdFailure,
   getPostByFollowingSuccess,
-  getPostByFollowingFailure,
+  getPostByFollowingFailure
 } from './postActions';
 
 import PostActionTypes from './postTypes';
 
 const token = () => JSON.parse(localStorage.getItem('jwt')).token;
 
-const transformData = (responseData) =>
+const transformData = responseData =>
   responseData.reduce((accumulator, response) => {
     accumulator[response._id] = response;
     return accumulator;
@@ -25,8 +25,8 @@ function* createPost({ payload: { userId, postData } }) {
     let res = yield axios.post(`/post/new/${userId}`, postData, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     yield console.log(res);
   } catch (err) {
@@ -39,8 +39,8 @@ function* getPostsByUser({ payload: { userProfileId } }) {
     let res = yield call(axios.get, `/post/by/${userProfileId}`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     let transformedData = yield call(transformData, res.data);
     yield put(getPostByUserSuccess(transformedData));
@@ -54,8 +54,8 @@ function* getPostById({ payload: { postId } }) {
     let res = yield call(axios.get, `/post/${postId}`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     yield console.log(res);
     yield put(getPostByIdSuccess(res.data));
@@ -69,8 +69,8 @@ function* getPostByFollowing({ payload: { userId } }) {
     let res = yield call(axios.get, `/post/by/following/${userId}`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     let transformedData = yield call(transformData, res.data);
     yield console.log('Transformed data ', transformedData);
@@ -104,6 +104,6 @@ export function* postSaga() {
     call(onCreatePostStart),
     call(onGetPostByUserStart),
     call(onGetPostByIdStart),
-    call(onGetPostByFollowingStart),
+    call(onGetPostByFollowingStart)
   ]);
 }
