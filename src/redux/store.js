@@ -13,12 +13,14 @@ if (process.env.NODE_ENV === 'development') {
   middlewares = [...middlewares, logger];
 }
 
+const isProduction = process.env.NODE_ENV === 'production';
+
+const composeEnhancers =
+  (!isProduction && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+
 const store = createStore(
   rootReducer,
-  compose(
-    applyMiddleware(...middlewares)
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  composeEnhancers(applyMiddleware(...middlewares))
 );
 
 sagaMiddleware.run(rootSaga);

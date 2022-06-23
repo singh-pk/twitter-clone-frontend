@@ -26,7 +26,7 @@ import {
   forgotPasswordSuccess,
   forgotPasswordFailure,
   resetPasswordSuccess,
-  resetPasswordFailure,
+  resetPasswordFailure
 } from './userActions';
 import { toggleEditProfileModalHidden } from '../modal/modalActions';
 
@@ -34,7 +34,7 @@ import UserActionTypes from './userTypes';
 
 const token = () => JSON.parse(localStorage.getItem('jwt')).token;
 
-const persistAuthState = (jwt) => {
+const persistAuthState = jwt => {
   if (typeof window !== undefined) {
     localStorage.setItem('jwt', JSON.stringify(jwt));
   }
@@ -68,7 +68,7 @@ function* signIn({ payload: { email, password } }) {
       '/signin',
       { email, password },
       {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' }
       }
     );
     yield call(persistAuthState, res.data);
@@ -93,8 +93,8 @@ function* updateUser({ payload: { userId, userData } }) {
     let res = yield call(axios.put, `/user/${userId}`, userData, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token()}`,
-      },
+        Authorization: `Bearer ${token()}`
+      }
     });
     let userInfo = yield JSON.parse(localStorage.getItem('jwt'));
     userInfo.user = Object.assign(userInfo.user, res.data);
@@ -116,8 +116,8 @@ function* likePost({ payload: { postId, userId } }) {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token()}`,
-        },
+          Authorization: `Bearer ${token()}`
+        }
       }
     );
     let userInfo = yield JSON.parse(localStorage.getItem('jwt'));
@@ -138,12 +138,12 @@ function* unlikePost({ payload: { postId, userId } }) {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token()}`,
-        },
+          Authorization: `Bearer ${token()}`
+        }
       }
     );
     let userInfo = yield JSON.parse(localStorage.getItem('jwt'));
-    userInfo.user.likes = userInfo.user.likes.filter((id) => id !== postId);
+    userInfo.user.likes = userInfo.user.likes.filter(id => id !== postId);
     yield call(persistAuthState, userInfo);
     yield put(unlikePostSuccess(postId));
   } catch (err) {
@@ -160,8 +160,8 @@ function* commentLike({ payload: { postId, commentId, userId } }) {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token()}`,
-        },
+          Authorization: `Bearer ${token()}`
+        }
       }
     );
     let userInfo = yield JSON.parse(localStorage.getItem('jwt'));
@@ -182,12 +182,12 @@ function* commentUnlike({ payload: { postId, commentId, userId } }) {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token()}`,
-        },
+          Authorization: `Bearer ${token()}`
+        }
       }
     );
     let userInfo = yield JSON.parse(localStorage.getItem('jwt'));
-    userInfo.user.likes = userInfo.user.likes.filter((id) => id !== commentId);
+    userInfo.user.likes = userInfo.user.likes.filter(id => id !== commentId);
     yield call(persistAuthState, userInfo);
     yield put(commentUnlikeSuccess(commentId));
   } catch (err) {
@@ -204,8 +204,8 @@ function* replyLike({ payload: { commentId, replyId, userId } }) {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token()}`,
-        },
+          Authorization: `Bearer ${token()}`
+        }
       }
     );
     let userInfo = yield JSON.parse(localStorage.getItem('jwt'));
@@ -226,12 +226,12 @@ function* replyUnlike({ payload: { commentId, replyId, userId } }) {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token()}`,
-        },
+          Authorization: `Bearer ${token()}`
+        }
       }
     );
     let userInfo = yield JSON.parse(localStorage.getItem('jwt'));
-    userInfo.user.likes = userInfo.user.likes.filter((id) => id !== replyId);
+    userInfo.user.likes = userInfo.user.likes.filter(id => id !== replyId);
     yield call(persistAuthState, userInfo);
     yield put(replyUnlikeSuccess(replyId));
   } catch (err) {
@@ -259,7 +259,7 @@ function* resetPassword({ payload: { resetPasswordToken, password } }) {
       '/reset-password',
       { resetPasswordToken, password },
       {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' }
       }
     );
     yield put(resetPasswordSuccess(res.data.message));
@@ -329,6 +329,6 @@ export function* userSaga() {
     call(onCommentLikeStart),
     call(onCommentUnlikeStart),
     call(onReplyLikeStart),
-    call(onReplyUnlikeStart),
+    call(onReplyUnlikeStart)
   ]);
 }
