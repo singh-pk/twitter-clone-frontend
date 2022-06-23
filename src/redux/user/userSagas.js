@@ -71,6 +71,8 @@ function* signIn({ payload: { email, password } }) {
         headers: { 'Content-Type': 'application/json' }
       }
     );
+    console.log({ data: res.data });
+    debugger;
     yield call(persistAuthState, res.data);
     yield put(signInSuccess(res.data.user));
   } catch (err) {
